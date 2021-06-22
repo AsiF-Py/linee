@@ -1,0 +1,31 @@
+{% extends "account/base.html" %}
+{% block content %}
+
+
+
+    {% if user.is_authenticated %}
+    <h1>Welcome, {{ request.user.username|capfirst }}. Thanks for logging in.</h1>
+     {{request.user.first_name}} 
+     {{user.last_name}}
+     {{user.email}}
+     {{user.phone}}
+     {{ user.last_login }} 
+     Username: {{ user.username }}<br>
+
+User Full name: {{ user.get_full_name }}<br>
+
+User Group: {{ user.groups.all.0 }}<br> 
+
+Email: {{ user.email }}<br>
+
+Session Started at: {{ user.last_login }}<br>
+sum :{{ user.sum }}<br>
+
+     {% endif %}
+{% endblock %}
+    
+    
+    
+
+
+    

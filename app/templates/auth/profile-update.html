@@ -1,0 +1,136 @@
+{% extends "account/base.html" %}
+{% block content %}
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+        <h1 class="h3 mb-0 text-gray-800">Profile Update</h1>
+        </div>          
+
+        <!-- Main Content Here -->
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Update Your Profile!</h1>
+                  </div>
+<form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    {{user_form }}
+                    {{profile_form}}
+
+
+<button type="submit" class="btn btn-success btn-block">Update</button>
+                  
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="{% url 'profile' %}">Back</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+</form>
+ {% comment  %}
+     
+ 
+ <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">First name</label>
+      <input type="text" name="first_name" class="form-control" id="validationCustom01" placeholder="First name" value="{{user.first_name}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" name="last_name" class="form-control" id="validationCustom02" placeholder="Last name" value="{{user.last_name}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" name="username" class="form-control" id="validationCustomUsername" placeholder="Username" value="{{user.username}}" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-8">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{user.email}}" id="inputEmail4" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+  <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3">{{user.profile.bio}}</textarea>
+  </div>
+  <div class="form-group">
+  <label for="example-tel-input">Telephone</label>
+    <input class="form-control" name="phone_number" type="tel" value="{{user.profile.phone_number}}" id="example-tel-input">
+  </div>
+  <div class="form-group">
+  <label for="example-date-input">Date</label>
+    <input class="form-control" name="birth_date" type="text" value="{{user.profile.birth_date}}" id="example-date-input">
+   
+  </div>
+
+
+</div>
+<div class="form-group">
+    <label for="exampleFormControlFile1">Change:</label>
+
+{{profile_form.profile_image}}
+  </div>
+
+
+
+{% endcomment %}
+
+ 
+
+
+                     
+ 
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+                  
+        
+        
+        
+    </div>
+    <!-- /.container-fluid -->
+<!-- Pills content -->
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "account/base.html" %}
+{% block head_title %}Profile{% endblock %}
+
+{% block content %}
+<style>
+	h1{
+		text-align: center;
+	}
+</style>
+<br>
+<br>
+<h1>{{request.user.username}}</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+
+<form method="post">
+	{% csrf_token %}
+	<div class="form-group">
+    
+    <textarea class="form-control" name="body" placeholder="Create Your Post..." rows="5"></textarea>
+    <br>
+    <br>
+
+    <div class="col-md-6 offset-md-5">
+    <input type="submit" class="btn btn-primary btn-lg" value="POST">
+  </div>
+</form>
+<h1>Your Time line</h1>
+
+{% for post in all_post %}
+	<h6>{{post.body}}</h6>
+	<p><small>{{post.publish}}</small></p>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock %}

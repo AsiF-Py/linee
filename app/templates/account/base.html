@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block head_title %}{% endblock %}</title>
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"
+></script>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <style>
+  
+    
+    body{
+      margin: 20px;
+      
+    }
+   .message{
+     margin-top: -200px;
+   }
+   .box{
+     margin-left: 900px;
+   }
+   .cart{
+      margin-left: 700px;
+   }
+   .account{
+     margin-left: 20px;
+   }
+</style>
+  <body>
+    {% block body %}
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src=""{% static 'images/facebook_cover_photo_1.png' %}
+          height="15"
+          alt=""
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Customer</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      
+
+      <!-- Notifications -->
+      <a
+        class="text-reset me-3 dropdown-toggle hidden-arrow"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fas fa-bell"></i>
+        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="navbarDropdownMenuLink"
+      >
+        <li>
+          <a class="dropdown-item" href="#">Some news</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Another news</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </li>
+      </ul>
+
+      <!-- Avatar -->
+        {% if user.is_authenticated %}
+
+      <a
+        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+          class="rounded-circle"
+          height="25"
+          alt=""
+          loading="lazy"
+        />
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="navbarDropdownMenuLink"
+      >
+        <li>
+          <a class="dropdown-item" href="#">My profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="{% url 'account_email' %}">Change Email</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+    {% else %}
+       
+    <!-- Right elements -->
+     <div class="d-flex align-items-center">
+       <a href="{% url 'account_login' %}"> <button type="button" class="btn btn-link px-3 me-2">
+          Login
+        </button></a>
+         <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-primary me-3">
+          Sign up for free
+        </button></a>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+
+        
+               
+                
+      
+        
+
+ 
+      
+ 
+      
+         
+      
+         
+        
+        
+   
+
+  
+
+
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+    
+      
+    
+      {% if messages %}
+      <div class="box">
+      <div class="row">
+      <div class="col-md-6 offset-md-3">
+     
+      <div class="message">
+      
+         <div class="alert alert-primary" role="alert"> 
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      {% endif %}
+      {% block message %}
+    {% endblock message %}
+  </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  {% comment %} <input type="email" name="email">
+  <input type="text" name="username">
+  <input type="password" name="password1">
+  <input type="password" name="password2">  {% endcomment %}
+
+
+ {% comment %} <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+  </div>
+ <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@username">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password1" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>  {% endcomment %}
+  
+
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</button>
+</form>
+</div>
+</div>
+{% endblock %}
